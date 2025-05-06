@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mungara Muddu Krishna Yadav - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        /* Custom styles for animations and enhanced UI - Refined Glassmorphism */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Darker, more saturated background */
+            color: #f9fafb; /* Off-white, slightly warmer text */
+            line-height: 1.7; /* Improved line height for readability */
+        }
+        .container {
+            max-width: 80rem; /* Increased max-width for larger screens */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .section-title {
+            font-size: 2.5rem; /* Larger title */
+            font-weight: 700;
+            color: #e0f2fe; /* Light cyan title */
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4); /* Deeper text shadow */
+            letter-spacing: -0.02em;
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* Slightly larger subtitle */
+            color: #a0aec0;
+            text-align: center;
+            margin-bottom: 4rem; /* Increased subtitle margin */
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.06); /* More transparent card */
+            border-radius: 1rem; /* More rounded corners */
+            padding: 2.5rem; /* Slightly increased card padding */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+            backdrop-filter: blur(12px); /* Slightly stronger blur */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtler border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+        }
+        .card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 4rem; /* Increased gap */
+        }
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .text-lg {
+            font-size: 1.125rem; /* Increased font size */
+            line-height: 1.8; /* Improved line height for larger text */
+            color: #d1d5db;
+        }
+        .mb-4 {
+            margin-bottom: 1.5rem; /* Increased margin */
+        }
+        .font-semibold {
+            font-weight: 600;
+            color: #f5f5f5; /* Slightly brighter bold text */
+        }
+        .text-gray-400 {
+            color: #b1b1b1; /* Slightly lighter gray */
+        }
+        .inline-flex {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mr-2 {
+            margin-right: 0.75rem; /* Increased margin */
+        }
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        .bg-blue-500 {
+            background-color: #60a5fa; /* Lighter blue */
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #3b82f6; /* Darker blue on hover */
+        }
+        .text-white {
+            color: #fff;
+        }
+        .px-6 {
+            padding-left: 1.75rem; /* Increased padding */
+            padding-right: 1.75rem;
+        }
+        .py-3 {
+            padding-top: 1rem; /* Increased padding */
+            padding-bottom: 1rem;
+        }
+        .transition-colors {
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; /* Added transform to transition */
+            transition-duration: 0.3s;
+            transition-timing-function: ease;
+        }
+        .border-2 {
+            border-width: 2px;
+        }
+        .border-blue-500 {
+            border-color: #60a5fa; /* Lighter blue border */
+        }
+        .focus\:outline-none:focus {
+            outline: none;
+        }
+        .focus\:ring-2:focus {
+            --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+            --tw-ring-offset-width: 2px;
+            --tw-ring-offset-color: #111827; /* Darker ring offset */
+            --tw-ring-color: #60a5fa; /* Lighter blue ring */
+            box-shadow: 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+        }
+        .focus\:ring-opacity-50:focus {
+            --tw-ring-opacity: 0.5;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.06); /* More transparent project card */
+            border-radius: 1rem;
+            padding: 2rem; /* Slightly increased padding */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+        }
+
+        .project-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+        }
+
+        .project-title {
+            font-size: 1.5rem; /* Increased font size */
+            font-weight: 600;
+            color: #e0f7fa; /* Lighter cyan for project title */
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-description {
+            font-size: 1rem;
+            line-height: 1.7; /* Improved line height */
+            color: #d1d5db;
+            margin-bottom: 1.5rem; /* Increased margin */
+        }
+
+         .skill-badge {
+            background-color: rgba(100, 149, 237, 0.15); /* Lightened skill badge background */
+            color: #87cefa; /* Light sky blue for text */
+            padding: 0.5rem 1rem;
+            border-radius: 1rem; /* Fully rounded corners */
+            margin-right: 0.75rem; /* Increased margin */
+            margin-bottom: 0.75rem; /* Increased margin */
+            font-size: 0.875rem; /* Slightly increased font size */
+            border: 1px solid rgba(100, 149, 237, 0.3); /* Lightened border */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform transition */
+        }
+
+        .skill-badge:hover {
+            background-color: rgba(100, 149, 237, 0.25); /* Slightly darker on hover */
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.06); /* More transparent form */
+            border-radius: 1rem;
+            padding: 2.5rem; /* Increased padding */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem; /* Increased margin */
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e0f7fa; /* Lighter cyan label */
+            margin-bottom: 0.75rem; /* Increased margin */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem; /* Increased padding */
+            border-radius: 0.75rem; /* More rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Lighter border */
+            background-color: rgba(255, 255, 255, 0.08); /* More transparent input */
+            color: #d1d5db;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+            backdrop-filter: blur(6px);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle inset shadow */
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #60a5fa; /* Lighter blue focus border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Focus shadow */
+        }
+
+        .form-textarea {
+            resize: vertical;
+            height: 120px; /* Increased height */
+        }
+
+        .submit-button {
+            background-color: #60a5fa; /* Lighter blue submit button */
+            color: #fff;
+            padding: 1rem 2.5rem; /* Increased horizontal padding */
+            border-radius: 0.75rem; /* More rounded corners */
+            font-size: 1.125rem; /* Slightly larger font */
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transform and box-shadow */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+        }
+
+        .submit-button:hover {
+            background-color: #3b82f6; /* Darker blue on hover */
+            transform: translateY(-0.25rem); /* Slight upward movement on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+        }
+
+        .submit-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5); /* Lighter blue focus ring */
+        }
+
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .social-icon {
+            width: 2.5rem; /* Increased size */
+            height: 2.5rem;
+            margin: 0.75rem; /* Increased margin */
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1); /* More transparent social icons */
+            color: #e0f7fa; /* Lighter cyan icons */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transform and box-shadow */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+            transform: scale(1.1); /* Slight scale on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+        }
+
+        .social-icon svg {
+            width: 1.5rem; /* Increased icon size */
+            height: 1.5rem;
+        }
+
+        .footer {
+            margin-top: 6rem; /* Increased margin */
+            text-align: center;
+            color: #b1b1b1; /* Slightly lighter footer text */
+            padding: 2rem 0; /* Increased vertical padding */
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Very faint border */
+            background-color: rgba(0, 0, 0, 0.03); /* Very subtle background */
+        }
+        .footer a{
+             color: #b1b1b1; /* Slightly lighter footer text */
+        }
+
+         .footer a:hover{
+             color: #60a5fa;
+         }
+
+        /* Scroll indicator */
+        #scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        #scroll-indicator svg {
+            width: 2rem; /* Increased size */
+            height: 2rem;
+            color: #a0aec0; /* Light gray arrow */
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-0.5rem);
+            }
+            60% {
+                transform: translateY(-0.25rem);
+            }
+        }
+
+        #scroll-indicator span {
+            font-size: 0.75rem;
+            color: #cbd5e0; /* Slightly lighter text */
+            margin-top: 0.5rem;
+        }
+
+
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+    <div id="particles-js"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-gray-300 py-4 fixed w-full z-10">
+        <div class="container flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-400">Portfolio</a>
+            <div class="flex space-x-6">
+                <a href="#about" class="hover:text-blue-400">About Me</a>
+                <a href="#experience" class="hover:text-blue-400">Experience</a>
+                <a href="#education" class="hover:text-blue-400">Education</a>
+                <a href="#skills" class="hover:text-blue-400">Skills</a>
+                <a href="#projects" class="hover:text-blue-400">Projects</a>
+                <a href="#contact" class="hover:text-blue-400">Contact</a>
+                <a href="#resume" class="hover:text-blue-400">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pt-20"> <!-- Added padding to avoid overlap with fixed navbar -->
+        <header class="py-10 text-center">
+            <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 animate-hue">
+                Mungara Muddu Krishna Yadav
+            </h1>
+            <p class="text-lg text-gray-400 mt-4">
+                Game Developer | Unity | C# | Python | Machine Learning
+            </p>
+            <div class="mt-8 flex justify-center">
+                <a href="https://www.linkedin.com/in/mungara-muddu-krishna-yadav-91b9a5235" target="_blank" rel="noopener noreferrer" class="social-icon hover:bg-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.25c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.25h-3v-5.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5v5.5h-3v-10h3v1.5c.88-1.32 2.5-2.25 4.25-2.25 2.48 0 4.5 2.02 4.5 4.5v6.25z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/mmkyadav" target="_blank" rel="noopener noreferrer" class="social-icon hover:bg-gray-700">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.3-.87 2.23a4 4 0 0 1-1.12 1.27v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                </a>
+                <a href="https://mmkyadav.github.io/" target="_blank" rel="noopener noreferrer" class="social-icon hover:bg-purple-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><path d="M10.21 4.13a8 8 0 1 0 9.66 9.66"></path><path d="M10.21 10.13a4 4 0 1 0 5.66 5.66"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <section id="about" class="py-12">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                A highly motivated game development enthusiast eager to apply my skills and passion to create engaging and innovative gaming experiences. Seeking my first opportunity to contribute to a dynamic team and grow as a professional in the game development industry.
+            </p>
+            <div class="card">
+                <p class="text-lg">
+                    I'm a passionate game development enthusiast with a strong foundation in Unity and C#. I enjoy designing and building engaging gameplay mechanics, polishing player experiences, and bringing ideas to life through interactive projects. I'm actively seeking my first opportunity in the game industry where I can grow as a developer and contribute to meaningful, creative games.
+                </p>
+            </div>
+        </section>
+
+        <section id="experience" class="py-12">
+            <h2 class="section-title">Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="font-semibold text-xl mb-2 text-white">ReNote Al Pvt Ltd - Intern</h3>
+                    <p class="text-gray-400 mb-1">Aug 2024 – Νοv 2024</p>
+                    <p class="text-lg">
+                        Contributing to AR projects, leveraging skills in game development and interactive technology.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl mb-2 text-white">GoLive Games - Unity Intern</h3>
+                    <p class="text-gray-400 mb-1">Mar 2024 - Apr 2024</p>
+                    <p class="text-lg">
+                        Developed interactive educational puzzle games for children.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl mb-2 text-white">NECUN Innovations Pvt Ltd - Intern</h3>
+                    <p class="text-gray-400 mb-1">Jul 2023 - Aug 2023</p>
+                    <p class="text-lg">
+                        Contributed to an OMR evaluation project using OpenCV.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-12">
+            <h2 class="section-title">Education</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="font-semibold text-xl mb-2 text-white">B. Tech in Computer Science Engineering (AI & ML)</h3>
+                    <p class="text-gray-400 mb-1">GMR Institute of Technology, Rajam (2022-2025)</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl mb-2 text-white">Diploma in Computer Engineering</h3>
+                    <p class="text-gray-400 mb-1">Sree Vidyanikethan Engineering College, Tirupati (2019-2022)</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl mb-2 text-white">Secondary School Education</h3>
+                    <p class="text-gray-400 mb-1">Ratnam High School, Nellore (2019)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-12">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="card">
+                <div class="flex flex-wrap">
+                    <span class="skill-badge"><i class="fab fa-cuttlefish mr-2"></i>C#</span>
+                    <span class="skill-badge"><i class="fas fa-code mr-2"></i>C</span>
+                    <span class="skill-badge"><i class="fab fa-python mr-2"></i>Python</span>
+                    <span class="skill-badge"><i class="fab fa-java mr-2"></i>Java</span>
+                    <span class="skill-badge"><i class="fas fa-gamepad mr-2"></i>Unity Engine</span>
+                    <span class="skill-badge"><i class="fas fa-puzzle-piece mr-2"></i>Game Development</span>
+                    <span class="skill-badge"><i class="fas fa-layer-group mr-2"></i>Level Design</span>
+                    <span class="skill-badge"><i class="fas fa-code mr-2"></i>C# Scripting</span>
+                    <span class="skill-badge"><i class="fas fa-brain mr-2"></i>Machine Learning</span>
+                    <span class="skill-badge"><i class="fas fa-camera mr-2"></i>OpenCV</span>
+                    <span class="skill-badge"><i class="fab fa-html5 mr-2"></i>HTML</span>
+                    <span class="skill-badge"><i class="fab fa-css3-alt mr-2"></i>CSS</span>
+                    <span class="skill-badge"><i class="fas fa-microchip mr-2"></i>Arduino</span>
+                    <span class="skill-badge"><i class="fas fa-vr-cardboard mr-2"></i>AR Foundation</span>
+                    <span class="skill-badge"><i class="fas fa-cube mr-2"></i>Vuforia Engine</span>
+                    <span class="skill-badge"><i class="fas fa-brain-circuit mr-2"></i>Sentis</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-12">
+            <h2 class="section-title">Projects</h2>
+            <div class="grid">
+                <div class="project-card">
+                    <h3 class="project-title">Smart Attendance System</h3>
+                    <p class="project-description">
+                        Developed an attendance system based on facial recognition using Convolutional Neural Networks (CNN) with a web-based frontend.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Python</li>
+                        <li>- OpenCV</li>
+                        <li>- Flask</li>
+                        <li>- HTML/CSS</li>
+                        <li>- Firebase</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">OMR Evaluation</h3>
+                    <p class="project-description">
+                        Developed a system that evaluates OMR exam answer sheets using the OpenCV module in Python.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Python</li>
+                        <li>- OpenCV</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Arduino Car</h3>
+                    <p class="project-description">
+                        Built a remote-controlled bot car controlled by a mobile device using Wi-Fi and an Arduino UNO circuit board.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Arduino UNO</li>
+                        <li>- C++</li>
+                        <li>- Wi-Fi Module</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">AR Face Mask</h3>
+                    <p class="project-description">
+                        Created an AR face filter of a Face Mask in Unity using AR foundations from Unity Registry.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- AR Foundation</li>
+                        <li>- C#</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">AR Butterfly</h3>
+                    <p class="project-description">
+                        Created a 3D butterfly and animations in Unity engine using the Vuforia Engine.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- Vuforia Engine</li>
+                        <li>- C#</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Dragon Controller</h3>
+                    <p class="project-description">
+                        Created an image-based Dragon model in AR, controllable from a device.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- AR Foundation</li>
+                        <li>- C#</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Flappy Bird Recreation</h3>
+                    <p class="project-description">
+                        Recreated the classic Flappy Bird game in Unity, adding custom UI elements while keeping core mechanics unchanged.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- C#</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Balloon Saver</h3>
+                    <p class="project-description">
+                        Inspired by "Rise Up," the player protects a balloon from random falling obstacles by clearing the path.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- C#</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Ball Defender</h3>
+                    <p class="project-description">
+                        A Unity game where the player defends himself from enemies on a plane.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- C#</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Object Detection in Unity</h3>
+                    <p class="project-description">
+                        Explored object detection using the YOLO model integrated with Unity, initially using Barracuda and later Sentis.
+                    </p>
+                    <ul class="text-gray-400 text-sm">
+                        <li>- Unity</li>
+                        <li>- YOLO Model</li>
+                        <li>- Barracuda</li>
+                        <li>- Sentis</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="py-12">
+            <h2 class="section-title">Download My Resume</h2>
+            <div class="card text-center">
+                <p class="text-lg mb-4">
+                    Click the button below to download my resume and learn more about my skills and experience.
+                </p>
+                <a href="https://drive.google.com/file/d/10WtrG8KnRV7p7_ZzhHkF57tvPoGgaJLL/view?usp=sharing" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="submit-button">
+                    Download Resume
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="py-12">
+            <h2 class="section-title">Contact Details</h2>
+            <div class="card">
+                <div class="text-lg">
+                    <p><strong>Email:</strong> <a href="mailto:muddukrishnayadavmk@gmail.com" class="text-blue-400 hover:underline">muddukrishnayadavmk@gmail.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+918978238767" class="text-blue-400 hover:underline">+91 8978238767</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mungara-muddu-krishna-yadav-91b9a5235" target="_blank" class="text-blue-400 hover:underline">linkedin.com/in/mungara-muddu-krishna-yadav-91b9a5235</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/mmkyadav" target="_blank" class="text-blue-400 hover:underline">github.com/mmkyadav</a></p>
+                    <p><strong>Portfolio:</strong> <a href="https://mmkyadav.github.io/" target="_blank" class="text-blue-400 hover:underline">mmkyadav.github.io</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p> 2025 Mungara Muddu Krishna Yadav </p>
+    </footer>
+
+     <div id="scroll-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 6 4.5 13.5M12 6v17.25"/>
+        </svg>
+        <span>Scroll Down</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#a0aec0' /* Light gray particles */
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    },
+                    image: {
+                        src: '',
+                        width: 100,
+                        height: 100
+                    }
+                },
+                opacity: {
+                    value: 0.6, /* Slightly more opaque */
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 0.8, /* Slightly slower animation */
+                        opacity_min: 0.3,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3, /* Slightly smaller particles */
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2, /* Slightly slower animation */
+                        size_min: 1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#a0aec0', /* Light gray lines */
+                    opacity: 0.4,
+                    width: 1.2, /* Slightly thicker lines */
+                    shadow: {
+                        enable: false,
+                        color: '#000000',
+                        blur: 5,
+                    }
+                },
+                move: {
+                    enable: true,
+                    speed: 1.6, /* Slightly slower speed */
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.6 /* Slightly more opaque on grab */
+                        }
+                    },
+                    bubble: {
+                        distance: 250,
+                        size: 10,
+                        duration: 2,
+                        opacity: 0.8, /* Slightly more opaque on bubble */
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+    <script>
+        // Simple scroll reveal
+        window.addEventListener('scroll', revealElements);
+
+        function revealElements() {
+            const elements = document.querySelectorAll('.card, .project-card, .section-title, .contact-form');
+            for (let i = 0; i < elements.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = elements[i].getBoundingClientRect().top;
+                let elementVisible = 150; // Adjust as needed
+
+                if (elementTop < windowHeight - elementVisible) {
+                    elements[i].classList.add('revealed');
+                    elements[i].style.opacity = "1";
+                    elements[i].style.transform = "translateY(0)";
+                } else {
+                    elements[i].classList.remove('revealed');
+                    elements[i].style.opacity = "0";
+                    elements[i].style.transform = "translateY(20px)"; // Start from 20px below
+                }
+            }
+        }
+    </script>
+
+<script>
+    const form = document.getElementById('contact-form');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get the form data
+        const formData = new FormData(form);
+
+        // Convert form data to a plain object
+        let formDataObject = {};
+        formData.forEach((value, key) => {
+            formDataObject[key] = value;
+        });
+
+        // Convert the object to a JSON string
+        const jsonData = JSON.stringify(formDataObject);
+
+
+
+        // Simulate sending data (replace with actual fetch)
+        fetch('https://formspree.io/f/your-form-id', {  // Replace with your actual Formspree endpoint
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: jsonData,
+        })
+        .then(response => {
+            if (response.ok) {
+                // Optionally reset the form on success
+                form.reset();
+                alert('Thank you for your message! I will get back to you soon.'); // improved message.
+            } else {
+                throw new Error('Failed to send message');
+            }
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Sorry, there was an error sending your message. Please try again.');
+        });
+    });
+</script>
+
+<script>
+    // Color transition for the name
+    const nameElement = document.querySelector('.animate-hue');
+    if (nameElement) {
+        let hue = 0;
+        function animateNameColor() {
+            hue = (hue + 1) % 360;
+            nameElement.style.backgroundImage = `linear-gradient(to right, hsl(${hue}, 100%, 65%), hsl(${(hue + 180) % 360}, 100%, 65%))`;
+            requestAnimationFrame(animateNameColor);
+        }
+        animateNameColor();
+    }
+</script>
+</body>
+</html>
